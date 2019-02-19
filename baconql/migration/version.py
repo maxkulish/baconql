@@ -23,6 +23,8 @@ def create_version(db, v):
         db.execute(text(
                 """CREATE TABLE %s (id VARCHAR(128));""" % (VERSION_TABLE,)
         ))
+    else:
+        db.execute("""DELETE FROM %s;""" % (VERSION_TABLE,))
 
     db.execute(text(
             """INSERT INTO %s (id) VALUES (:id);""" % (VERSION_TABLE,)
